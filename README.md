@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/github/ralphweng2023/banking-app/graph/badge.svg?token=Wgi1ZjUF82)](https://codecov.io/github/ralphweng2023/banking-app)
 # Banking Application
 
 This project is a simple banking application implemented in TypeScript, following Domain-Driven Design (DDD) principles. The application supports basic banking operations such as creating customers, depositing money, withdrawing money, and transferring money between customers. It also includes features for managing customers and calculating the total balance across all accounts.
