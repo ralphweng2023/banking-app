@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        SONARQUBE_ENV = 'SonarQube_Server'
+        SONARQUBE_ENV = 'Local SonarQube'
     }
 
     stages {
@@ -47,7 +47,7 @@ pipeline {
         stage('Code Quality') {
             steps {
                 echo 'Running SonarQube analysis...'
-                withSonarQubeEnv('SonarQube_Server') { // Ensure your SonarQube server is configured
+                withSonarQubeEnv('SonarQube_Server') {
                     sh 'sonar-scanner'
                 }
             }
