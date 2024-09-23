@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS 18' // The name you provided in Global Tool Configuration
+        nodejs 'NodeJs 22'
     }
 
     environment {
