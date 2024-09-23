@@ -1,8 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'NodeJS 18' // The name you provided in Global Tool Configuration
+    }
+
     environment {
-        // Define your environment variables, e.g., SonarQube environment if needed
         SONARQUBE_ENV = 'SonarQube_Server'
     }
 
@@ -54,7 +57,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
-                // You can replace this with your actual deployment step
+                // Replace with your actual deployment step
                 sh 'docker-compose up -d'  // Example if using Docker Compose
             }
         }
