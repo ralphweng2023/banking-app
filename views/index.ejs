@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results</title>
+</head>
+<body>
+<h1>Integration Test Results</h1>
+<ul>
+    <% results.testResults.forEach(testSuite => { %>
+        <li>
+            <h2><%= testSuite.name %></h2>
+            <ul>
+                <% testSuite.assertionResults.forEach(test => { %>
+                    <li>
+                        <%= test.title %>: <%= test.status %>
+                    </li>
+                <% }) %>
+            </ul>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>
