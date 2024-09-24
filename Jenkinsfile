@@ -31,6 +31,7 @@ pipeline {
                 echo 'Building the TypeScript project...'
                 sh 'npm run build'
                 sh 'ls -la dist'
+                sh 'pwd'
             }
         }
 
