@@ -7,6 +7,11 @@ pipeline {
 
     environment {
         SONARQUBE_ENV = 'Local SonarQube'
+        AWS_REGION = 'us-east-1'  // Replace with your region
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')  // AWS Access Key ID stored in Jenkins credentials
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')  // AWS Secret Access Key stored in Jenkins credentials
+        APP_NAME = 'my-bank'  // Replace with your Elastic Beanstalk app name
+        ENV_NAME = 'My-bank-env'  // Replace with your Elastic Beanstalk environment name
     }
 
     stages {
@@ -52,11 +57,23 @@ pipeline {
 //         }
 
         // Stage 6: Deploy
-        stage('Deploy') {
+        stage('Deploy to AWS Elastic Beanstalk') {
             steps {
-                echo 'Deploying the application...'
-                // Replace with your actual deployment step
-                sh 'docker-compose up -d'  // Example if using Docker Compose
+                script {
+                    def versionLabel = "v${env.BUILD_ID}"
+                    sh '''
+                    aws elasticbeanstalk create-application-version \
+                        --application-name $APP_NAME \
+                        --version-label ${versionLabel} \
+                        --source-bundle S3Bucket=mybucket,S3Key=myapp.zip \
+                        --region $AWS_REGION
+                    aws elasticbeanstalk update-environment \
+                        --application-name $APP_NAME \
+                        --environment-name $ENV_NAME \
+                        --version-label ${versionLabel} \
+                        --region $AWS_REGION
+                    '''
+                }
             }
         }
     }
