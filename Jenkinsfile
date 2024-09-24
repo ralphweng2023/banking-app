@@ -32,6 +32,7 @@ pipeline {
                 sh 'npm run build'
                 sh 'ls -la dist'
                 sh 'pwd'
+                sh 'chmod -R 777 /var/jenkins_home/workspace/Banking\\ App\\ Pipeline/dist'
             }
         }
 
