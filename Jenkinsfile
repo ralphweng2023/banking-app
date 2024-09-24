@@ -66,7 +66,8 @@ pipeline {
                 script {
                     sh 'ls -la /var/jenkins_home/workspace/BankingAppPipeline/dist'
                     sh 'docker-compose down -v'
-                    sh 'docker-compose up --build'
+                    sh 'docker-compose up -d'
+                    sh 'docker cp ./dist bankingapppipeline_app_1:/usr/src/app'
                 }
             }
         }
