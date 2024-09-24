@@ -12,6 +12,6 @@ services:
     working_dir: /usr/src/app
     volumes:
       - /var/jenkins_home/workspace/BankingAppPipeline/dist:/usr/src/app
-    command: bash -c "cp -r /usr/src/app /usr/src/app_copy && node /usr/src/app_copy/server.js"
+    command: bash -c "cp -r /usr/src/app /usr/src/app_copy && node /usr/src/app_copy/dist/server.js"
     ports:
       - "3000:3000"
