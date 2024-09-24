@@ -11,7 +11,7 @@ services:
     image: node:18
     working_dir: /usr/src/app
     volumes:
-      - /var/jenkins_home/workspace/Banking\ App\ Pipeline/dist:/usr/src/app
+      - /var/jenkins_home/workspace/BankingAppPipeline/dist:/usr/src/app
     command: /bin/sh -c "ls -la /usr/src/app && sleep 600"     # Run 'ls -la' to list all files in the '/usr/src/app' directory for debugging
     ports:
       - "3000:3000"
