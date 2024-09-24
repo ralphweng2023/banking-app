@@ -63,6 +63,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    sh 'ls -la /var/jenkins_home/workspace/Banking\\ App\\ Pipeline/dist'
                     sh 'docker-compose up --build'
                 }
             }
