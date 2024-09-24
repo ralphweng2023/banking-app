@@ -48,7 +48,7 @@ pipeline {
             steps {
                 echo 'Running SonarQube analysis...'
                 withSonarQubeEnv('Local SonarQube') {
-                    sh 'sonar-scanner'
+                    sh 'npm run sonar'
                 }
             }
         }
