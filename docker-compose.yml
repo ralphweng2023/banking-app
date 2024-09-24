@@ -8,10 +8,10 @@ services:
       - ./web:/usr/share/nginx/html
 
   app:
-    image: node:18                   # Use the official Node.js 18 image
-    working_dir: /usr/src/app         # Set the working directory inside the container
+    image: node:18
+    working_dir: /usr/src/app
     volumes:
-      - ./dist:/usr/src/app           # Mount the 'dist' folder (where the built files are stored)
-    command: /bin/sh -c "ls -la"      # Run 'ls -la' to list all files in the '/usr/src/app' directory for debugging
+      - /var/jenkins_home/workspace/Banking\ App\ Pipeline/dist:/usr/src/app
+    command: node server.js
     ports:
-      - "3000:3000"                   # Expose port 3000
+      - "3000:3000"
