@@ -51,17 +51,6 @@ pipeline {
             }
         }
 
-        stage('Install Docker Compose') {
-            steps {
-                sh '''
-                if ! [ -x "$(command -v docker-compose)" ]; then
-                    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    chmod +x /usr/local/bin/docker-compose
-                fi
-                '''
-            }
-        }
-
         // Stage 6: Deploy
         stage('Deploy') {
             steps {
