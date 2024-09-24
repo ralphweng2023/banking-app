@@ -48,10 +48,14 @@ pipeline {
             steps {
                 echo 'Running SonarQube analysis with Dockerized SonarScanner...'
                 sh '''
+                # Create a sanitized path by replacing spaces with underscores
+                WORKSPACE_PATH=$(pwd | sed 's/ /_/g')
+                cp -r "$(pwd)" "$WORKSPACE_PATH"
+
                 docker run --rm \
                   -e SONAR_HOST_URL=http://192.168.0.167:9000 \
                   -e SONAR_LOGIN=sqp_b6962d6afbe312f3f248606006709e433a6f3f64 \
-                  -v $(pwd):/usr/src \
+                  -v "$WORKSPACE_PATH":/usr/src \
                   sonarsource/sonar-scanner-cli:latest \
                   sonar-scanner \
                   -Dsonar.projectKey=my-bank \
