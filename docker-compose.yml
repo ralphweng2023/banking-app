@@ -12,6 +12,6 @@ services:
     working_dir: /usr/src/app         # Set the working directory inside the container
     volumes:
       - ./dist:/usr/src/app           # Mount the 'dist' folder (where the built files are stored)
-    command: node server.js           # Start the app from the 'dist' folder using node
+    command: /bin/sh -c "ls -la"      # Run 'ls -la' to list all files in the '/usr/src/app' directory for debugging
     ports:
       - "3000:3000"                   # Expose port 3000
