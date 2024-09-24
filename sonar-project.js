@@ -2,7 +2,7 @@ const { default: sonarqubeScanner } = require('sonarqube-scanner');
 
 sonarqubeScanner(
     {
-        serverUrl: 'http://localhost:9000',
+        serverUrl: 'http://192.168.0.167:9000',
         options: {
             'sonar.projectKey': 'my-bank',
             'sonar.sources': '.',
