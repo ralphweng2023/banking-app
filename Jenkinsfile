@@ -32,7 +32,7 @@ pipeline {
                 sh 'npm run build'
                 sh 'ls -la dist'
                 sh 'pwd'
-                sh 'chmod -R 777 /var/jenkins_home/workspace/BankingAppPipeline/dist'
+                sh 'chmod -R 777 /var/jenkins_home/workspace/BankingAppPipeline@2/dist'
             }
         }
 
@@ -64,7 +64,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'ls -la /var/jenkins_home/workspace/BankingAppPipeline/dist'
+                    sh 'ls -la /var/jenkins_home/workspace/BankingAppPipeline@2/dist'
                     sh 'docker-compose down -v'
                     sh 'docker-compose up -d'
                     sh 'docker cp ./ bankingapppipeline_app_1:/usr/src/app'

@@ -11,7 +11,7 @@ services:
     image: node:18
     working_dir: /usr/src/app
     volumes:
-      - /var/jenkins_home/workspace/BankingAppPipeline/dist:/usr/src/app
+      - /var/jenkins_home/workspace/BankingAppPipeline2/dist:/usr/src/app
     command: sh -c "npm install && npm start"
     ports:
       - "3000:3000"
