@@ -36,29 +36,29 @@ pipeline {
             }
         }
 
-//         // Stage 3: Unit Testing
-//         stage('Unit Tests') {
-//             steps {
-//                 echo 'Running unit tests...'
-//                 sh 'npm run test:unit'
-//             }
-//         }
-//
-//         // Stage 4: Integration Testing
-//         stage('Integration Tests') {
-//             steps {
-//                 echo 'Running integration tests...'
-//                 sh 'npm run test:integration'
-//             }
-//         }
-//
-//         // Stage 5: Code Quality Analysis
-//         stage('Code Quality') {
-//             steps {
-//                 echo 'Running SonarQube analysis...'
-//                 sh 'npm run sonar'
-//             }
-//         }
+        // Stage 3: Unit Testing
+        stage('Unit Tests') {
+            steps {
+                echo 'Running unit tests...'
+                sh 'npm run test:unit'
+            }
+        }
+
+        // Stage 4: Integration Testing
+        stage('Integration Tests') {
+            steps {
+                echo 'Running integration tests...'
+                sh 'npm run test:integration'
+            }
+        }
+
+        // Stage 5: Code Quality Analysis
+        stage('Code Quality') {
+            steps {
+                echo 'Running SonarQube analysis...'
+                sh 'npm run sonar'
+            }
+        }
 
         // Stage 6: Deploy
         stage('Deploy') {
