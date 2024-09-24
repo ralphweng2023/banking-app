@@ -47,9 +47,7 @@ pipeline {
         stage('Code Quality') {
             steps {
                 echo 'Running SonarQube analysis...'
-                withSonarQubeEnv('Local SonarQube') {
-                    sh 'npm run sonar'
-                }
+                sh 'npm run sonar'
             }
         }
 
