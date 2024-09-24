@@ -65,6 +65,7 @@ pipeline {
             steps {
                 script {
                     sh 'ls -la /var/jenkins_home/workspace/Banking\\ App\\ Pipeline/dist'
+                    sh 'docker-compose down -v'
                     sh 'docker-compose up --build'
                 }
             }
