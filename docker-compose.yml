@@ -1,16 +1,9 @@
-version: '3'
 services:
-  web:
-    image: nginx:latest
-    ports:
-      - "80:80"
-    volumes:
-      - ./web:/usr/share/nginx/html
   app:
-    build: .
+    image: node:18
     working_dir: /usr/src/app
     volumes:
-      - ./dist:/usr/src/app
-    command: node dist/server.js
+      - .:/usr/src/app
+    command: /bin/sh -c "npm install && npm start"  # Install dependencies and then start the app
     ports:
       - "3000:3000"
