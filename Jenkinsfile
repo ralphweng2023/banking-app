@@ -46,8 +46,16 @@ pipeline {
         // Stage 5: Code Quality Analysis
         stage('Code Quality') {
             steps {
-                echo 'Running SonarQube analysis...'
-                sh 'npm run sonar'
+                echo 'Running SonarQube analysis with Dockerized SonarScanner...'
+                script {
+                    docker.image('sonarsource/sonar-scanner-cli:latest').inside {
+                        sh 'sonar-scanner \
+                            -Dsonar.projectKey=my-bank \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=http://192.168.0.167:9000 \
+                            -Dsonar.login=sqp_b6962d6afbe312f3f248606006709e433a6f3f64'
+                    }
+                }
             }
         }
 
